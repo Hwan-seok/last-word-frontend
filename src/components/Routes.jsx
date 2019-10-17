@@ -17,7 +17,7 @@ const Routes = () => (
     <Route path="/sign" component={Signin}></Route>
     <Route path="/rooms/page/:page" component={Rooms}></Route>
     <Route path="/room/:roomNum" component={InsideRoom}></Route>
-    <Route path="/room/makeRoom" component={MakeRoom}></Route>
+    <Route path="/makeRoom" component={MakeRoom}></Route>
     <Route path="/myPage" component={MyPage}></Route>
   </div>
 );
