@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import StartButton from './StartButton';
 import ReadyButton from './ReadyButton';
 import ChatBox from './ChatBox';
+import axios from 'axios';
 
 class InsideRoom extends React.Component {
   constructor(props) {
@@ -56,14 +57,20 @@ class InsideRoom extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/room/${this.props.match.params.roomNum}`)
-        .then((res) => res.json())
+    axios
+        .get(`/api/room/${this.props.match.params.roomNum}`)
         .then((body) => {
           this.setState({
             ...this.state,
             users: body.users,
             owner: body.owner,
           });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          if (err.response.data.stausCode === 401) {
+            this.props.history.goBack(1);
+          }
         });
   }
 

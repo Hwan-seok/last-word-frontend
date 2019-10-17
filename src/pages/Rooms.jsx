@@ -1,6 +1,8 @@
 import React from 'react';
 import Room from './Room';
 import axios from 'axios';
+import MakeRoom from './MakeRoom';
+import {Link} from 'react-router-dom';
 
 class Rooms extends React.Component {
   state = {
@@ -38,21 +40,21 @@ class Rooms extends React.Component {
     const page = this.props.match.params.page;
     const startedFilter = this.state.startedFilter;
     const privateFilter = this.state.privateFilter;
-    fetch(
-        `/api/room/page/${page}?startedFilter=${startedFilter}&privateFilter=${privateFilter}`
-    )
-        .then((res) => res.json())
-        .then((body) => {
+    axios
+        .get(
+            `/api/room/page/${page}?startedFilter=${startedFilter}&privateFilter=${privateFilter}`
+        )
+        .then((res) => {
           const willSetState = {
             ...this.state,
-            ...body,
+            ...res.data,
           };
           if (handling === 'STARTED_FILTER_HANDLING') {
             willSetState['startedFilter'] = selected;
           } else if (handling === 'PRIVATE_FILTER_HANDLING') {
             willSetState['privateFilter'] = selected;
           }
-          this.setState({...this.setState, ...willSetState});
+          this.setState((state, props) => ({...state, ...willSetState}));
         });
   };
 
@@ -74,6 +76,10 @@ class Rooms extends React.Component {
     console.log(q);
     const uri = `${this.props.match.url}`;
     this.props.history.push(uri);
+  };
+
+  goIntoRoom = (roomNum) => {
+    this.props.history.push(`/room/${roomNum}`);
   };
 
   render() {
@@ -115,11 +121,15 @@ class Rooms extends React.Component {
                     key={room.name}
                     {...room}
                     onClick={this.handleRoomClick}
+                    goIntoRoom={this.goIntoRoom}
                   ></Room>
                 );
               })}
           </tbody>
         </table>
+        <Link to="/makeRoom">
+          <button>방 만들기</button>
+        </Link>
       </div>
     );
   }
