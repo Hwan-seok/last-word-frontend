@@ -1,6 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import RoomPassInput from './RoomPassInput';
 import axios from 'axios';
 
 class Room extends React.Component {
