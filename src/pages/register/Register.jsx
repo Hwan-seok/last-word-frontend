@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class Signin extends React.Component {
+class Register extends React.Component {
   state = {
     fetching: false,
   };
@@ -57,4 +57,4 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default Register;

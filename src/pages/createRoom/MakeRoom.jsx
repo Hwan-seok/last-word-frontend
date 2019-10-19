@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class MakeRoom extends React.Component {
+class CreateRoom extends React.Component {
   componentDidMount() {
     axios
         .get('/api/auth/jwt', {
@@ -46,4 +46,4 @@ class MakeRoom extends React.Component {
   }
 }
 
-export default MakeRoom;
+export default CreateRoom;

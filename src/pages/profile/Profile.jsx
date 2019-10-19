@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class MyPage extends React.Component {
+class Profile extends React.Component {
   state = {
     id: null,
     email: null,
@@ -30,4 +30,4 @@ class MyPage extends React.Component {
   }
 }
 
-export default MyPage;
+export default Profile;

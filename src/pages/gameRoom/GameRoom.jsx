@@ -1,11 +1,11 @@
 import React from 'react';
 import io from 'socket.io-client';
-import StartButton from './StartButton';
-import ReadyButton from './ReadyButton';
-import ChatBox from './ChatBox';
+import StartButton from '../StartButton';
+import ReadyButton from '../ReadyButton';
+import ChatBox from '../ChatBox';
 import axios from 'axios';
 
-class InsideRoom extends React.Component {
+class GameRoom extends React.Component {
   constructor(props) {
     super(props);
     this.socket = io('http://localhost:4000/line', {
@@ -132,4 +132,4 @@ class InsideRoom extends React.Component {
   }
 }
 
-export default InsideRoom;
+export default GameRoom;

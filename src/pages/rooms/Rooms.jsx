@@ -1,7 +1,7 @@
 import React from 'react';
-import Room from './Room';
+import Room from '../Room';
 import axios from 'axios';
-import MakeRoom from './MakeRoom';
+import MakeRoom from '../createRoom/MakeRoom';
 import {Link} from 'react-router-dom';
 
 class Rooms extends React.Component {
