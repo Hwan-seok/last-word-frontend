@@ -2,18 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 class CreateRoom extends React.Component {
-  componentDidMount() {
-    axios
-        .get('/api/auth/jwt', {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('access')}`,
-          },
-        })
-        .then((res) => {})
-        .catch((err) => {
-          console.log(err);
-        });
-  }
   handleSubmit = (e) => {
     e.preventDefault();
     const {name, password, description} = e.target;

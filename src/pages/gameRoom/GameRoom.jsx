@@ -4,6 +4,7 @@ import StartButton from '../StartButton';
 import ReadyButton from '../ReadyButton';
 import ChatBox from '../ChatBox';
 import axios from 'axios';
+const NOT_AUTHORIZED_HTTP_CODE = 401;
 
 class GameRoom extends React.Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class GameRoom extends React.Component {
         })
         .catch((err) => {
           console.log(err.response.data);
-          if (err.response.data.stausCode === 401) {
+          if (err.response.data.stausCode === NOT_AUTHORIZED_HTTP_CODE) {
             this.props.history.goBack(1);
           }
         });
