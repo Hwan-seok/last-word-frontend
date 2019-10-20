@@ -45,3 +45,21 @@ const configStore = (preloadedState) => {
 export default configStore;
 
 /*
+export type PersistConfig = {
+  version?: number,
+  storage: Object,
+  key: string,
+  keyPrefix?: string, // @TODO remove in v6
+  blacklist?: Array<string>,
+  whitelist?: Array<string>,
+  transforms?: Array<Transform>,
+  throttle?: number,
+  migrate?: (PersistedState, number) => Promise<PersistedState>,
+  stateReconciler?: false | Function,
+  getStoredState?: PersistConfig =>Promise<PersistedState>,//used for migrations
+  debug?: boolean,
+  serialize?: boolean | Function,
+  deserialize?: boolean | Function,
+  timeout?: number,
+  writeFailHandler?: Function,
+} */
