@@ -5,14 +5,19 @@
     "dependencies": {
         "axios": "^0.19.0",
         "connected-react-router": "^6.5.2",
+        "history": "^4.10.1",
         "http-proxy-middleware": "^0.20.0",
         "react": "^16.10.1",
         "react-cookies": "^0.1.1",
         "react-dom": "^16.10.1",
+        "react-helmet": "^5.2.1",
         "react-redux": "^7.1.1",
         "react-router-dom": "^5.1.2",
         "react-scripts": "3.1.2",
         "redux": "^4.0.4",
+        "redux-persist": "^6.0.0",
+        "redux-saga": "^1.1.1",
+        "reselect": "^4.0.0",
         "socket.io-client": "^2.3.0"
     },
     "devDependencies": {
