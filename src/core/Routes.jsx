@@ -5,22 +5,22 @@ import {connect} from 'react-redux';
 import {
   Home,
   Login,
-  Signin,
-  MyPage,
+  Register,
+  Profile,
   Rooms,
-  InsideRoom,
-  MakeRoom,
+  GameRoom,
+  CreateRoom,
 } from '../pages';
 
 const Routes = ({isLoggedIn}) => (
   <Switch>
     <Route exact path="/" component={isLoggedIn ? Home : Rooms}></Route>
     <Route path="/login" component={Login}></Route>
-    <Route path="/sign" component={Signin}></Route>
+    <Route path="/register" component={Register}></Route>
     <Route path="/rooms/page/:page" component={Rooms}></Route>
-    <Route path="/room/:roomNum" component={InsideRoom}></Route>
-    <Route path="/makeRoom" component={MakeRoom}></Route>
-    <Route path="/myPage" component={MyPage}></Route>
+    <Route path="/room/:roomNum" component={GameRoom}></Route>
+    <Route path="/createRoom" component={CreateRoom}></Route>
+    <Route path="/profile/:id" component={Profile}></Route>
   </Switch>
 );
 
