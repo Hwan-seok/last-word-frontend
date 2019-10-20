@@ -2,10 +2,10 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {ConnectedRouter} from 'connected-react-router';
 
-import history from 'utils/history';
+import history from '../utils/history';
 import {Provider} from 'react-redux';
-import configureStore from 'store/configStore';
-import {PersistGate} from 'redux-persist/integration/react';
+import configureStore from '../store/configStore';
+import {PersistGate} from 'redux-persist/es/integration/react';
 
 import {AppTitle, AppHeader, AppFooter} from '../layouts';
 import Routes from './Routes';
