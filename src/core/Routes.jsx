@@ -14,7 +14,7 @@ import {
 
 const Routes = ({isLoggedIn}) => (
   <Switch>
-    <Route exact path="/" component={isLoggedIn ? Home : Rooms}></Route>
+    <Route exact path="/" component={isLoggedIn ? Rooms : Home}></Route>
     <Route path="/login" component={Login}></Route>
     <Route path="/register" component={Register}></Route>
     <Route path="/rooms/page/:page" component={Rooms}></Route>
@@ -25,7 +25,7 @@ const Routes = ({isLoggedIn}) => (
 );
 
 const mapStateToProps = (state) => ({
-  isLoggedIn: state.account.isLoggedIn,
+  isLoggedIn: state.auth.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(Routes);
