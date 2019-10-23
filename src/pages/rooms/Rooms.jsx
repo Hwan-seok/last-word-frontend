@@ -1,5 +1,5 @@
 import React from 'react';
-import Room from '../Room';
+import Room from './roomRow/Room';
 import axios from 'axios';
 import MakeRoom from '../createRoom/MakeRoom';
 import {Link} from 'react-router-dom';
