@@ -1,39 +1,19 @@
 import React from 'react';
-import axios from 'axios';
-class Login extends React.Component {
-  state = null;
+import {connect} from 'react-redux';
+import {authActionCreators} from '../../store/auth/auth.action';
 
+class Login extends React.Component {
   componentDidMount() {
-    if (localStorage.getItem('access')) {
-      axios
-          .get('/api/auth/jwt', {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('access')}`,
-            },
-          })
-          .then((res) => {
-            console.log(res);
-            this.props.history.push('/myPage');
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-    }
+    this.props.logout();
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const {id, password} = e.target;
-    axios
-        .post('/api/auth/login', {
-          id: id.value,
-          password: password.value,
-        })
-        .then((res) => {
-          localStorage.setItem('access', res.data.access_token);
-          localStorage.setItem('refresh', res.data.refresh_token);
-          this.props.history.push('/myPage');
-        });
+    const formData = {id: id.value, password: password.value};
+    this.props.login(formData);
+    // TODO: form data 따로 빼서 e.target로 분리 안해도 바로 필요한 object 반환되게하여
+    // , onsubmit에서 바로 login 호출 되도록
   };
   render() {
     return (
@@ -48,4 +28,11 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  login: (formData) => dispatch(authActionCreators.login(formData)),
+  logout: () => dispatch(authActionCreators.logout()),
+});
+export default connect(
+    undefined,
+    mapDispatchToProps,
+)(Login);

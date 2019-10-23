@@ -1,8 +1,8 @@
 import React from 'react';
 import io from 'socket.io-client';
-import StartButton from '../StartButton';
-import ReadyButton from '../ReadyButton';
-import ChatBox from '../ChatBox';
+import StartButton from './startButton/StartButton';
+import ReadyButton from './readyButton/ReadyButton';
+import ChatBox from './chatBox';
 import axios from 'axios';
 const NOT_AUTHORIZED_HTTP_CODE = 401;
 
