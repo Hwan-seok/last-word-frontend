@@ -3,11 +3,11 @@ import {routerMiddleware} from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import storage from 'redux-persist/lib/storage';
 
-import createRootReducer from './rootReducer';
+import rootReducer from './rootReducer';
 import history from '../utils/history';
 import {persistStore, persistReducer} from 'redux-persist';
 
-import createRootSaga from './rootSaga';
+import rootSaga from './rootSaga';
 const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
@@ -15,7 +15,7 @@ const persistConfig = {
   storage,
 };
 
-const configStore = (preloadedState) => {
+export default (preloadedState) => {
   const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const enhancers = [applyMiddleware(...middlewares)];
@@ -25,16 +25,16 @@ const configStore = (preloadedState) => {
 
   const persistedReducer = persistReducer(
       persistConfig,
-      createRootReducer(history)
+      rootReducer(history),
   );
   const store = createStore(
       persistedReducer,
       preloadedState,
-      composeEnhancers(...enhancers)
+      composeEnhancers(...enhancers),
   );
   const persistor = persistStore(store);
 
-  sagaMiddleware.run(createRootSaga);
+  sagaMiddleware.run(rootSaga);
 
   return {
     store,
@@ -42,7 +42,6 @@ const configStore = (preloadedState) => {
   };
 };
 
-export default configStore;
 
 /*
 export type PersistConfig = {

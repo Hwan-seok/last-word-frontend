@@ -16,7 +16,7 @@ requestAPI.interceptors.request.use(
 
       return config;
     },
-    (error) => Promise.reject(error)
+    (error) => Promise.reject(error),
 );
 
 requestAPI.interceptors.response.use(
@@ -53,12 +53,14 @@ requestAPI.interceptors.response.use(
             refreshTokenError.response.status === NOT_AUTHORIZED_HTTP_CODE
               ) {
                 /* refresh 요청 실패 - refresh token expired */
-                location.replace('/api/login');
+                window.location.replace('/api/login');
               }
               return Promise.reject(error);
             });
       }
       console.log('요청이 실패하였습니다');
       return Promise.reject(error);
-    }
+    },
 );
+
+export default requestAPI;
