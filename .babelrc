@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "targets": {
+            "browsers": ["IE >= 11"]
+          },
+          "useBuiltIns": "entry"
+        }
+      }
+    ]
+  ],
+  "plugins": [["emotion"], ["babel-plugin-root-import"]]
+}

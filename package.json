@@ -1,67 +1,77 @@
 {
-    "name": "chat1",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "axios": "^0.19.0",
-        "connected-react-router": "^6.5.2",
-        "history": "^4.10.1",
-        "http-proxy-middleware": "^0.20.0",
-        "react": "^16.10.1",
-        "react-cookies": "^0.1.1",
-        "react-dom": "^16.10.1",
-        "react-helmet": "^5.2.1",
-        "react-redux": "^7.1.1",
-        "react-router-dom": "^5.1.2",
-        "react-scripts": "3.1.2",
-        "redux": "^4.0.4",
-        "redux-persist": "^6.0.0",
-        "redux-saga": "^1.1.1",
-        "reselect": "^4.0.0",
-        "socket.io-client": "^2.3.0"
-    },
-    "devDependencies": {
-        "eslint": "^6.5.1",
-        "eslint-config-google": "^0.14.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "all": "react-scripts start && cd ../lining && npm run dev"
-    },
-    "eslintConfig": {
-        "extends": [
-            "eslint:recommended",
-            "google"
-        ],
-        "parser": "babel-eslint",
-        "parserOptions": {
-            "sourceType": "module"
-        },
-        "rules": {
-            "linebreak-style": 0,
-            "require-jsdoc": 0,
-            "no-class-assign": 0,
-            "no-unused-vars": 0,
-            "no-invalid-this": 0
-        },
-        "env": {
-            "browser": true
-        }
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "proxy": "http://localhost:4000"
+  "name": "with-typescript-styled-components",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "dotenv -e env/.env.local next",
+    "build": "dotenv -e env/.env.local next build",
+    "export": "dotenv -e env/.env.local next export",
+    "start": "dotenv -e env/.env.local next start",
+    "build:development": "dotenv -e env/.env.dev next build",
+    "build:production": "dotenv env/-e .env.prod next build",
+    "export:development": "dotenv -e env/.env.dev next export",
+    "export:production": "dotenv -e env/.env.prod next export",
+    "generate:sitemap": "node sitemapGenerator.js",
+    "deploy": "curl -i -X POST -H \"Accept: application/vnd.github.everest-preview+json\" -H \"Authorization: token %npm_package_actionCode%\" -H \"Content-Type: application/json\" -d \"{\\\"event_type\\\": \\\"repository_dispatch\\\"}\" https://api.github.com/repos/Hwan-seok/serving-web-frontend/dispatches"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "axios": "^0.19.0",
+    "babel-plugin-emotion": "^10.0.27",
+    "babel-polyfill": "^6.26.0",
+    "dotenv": "^8.2.0",
+    "immer": "^5.3.6",
+    "jwt-decode": "^2.2.0",
+    "next": "^9.1.6",
+    "next-redux-saga": "^4.1.2",
+    "next-redux-wrapper": "^4.0.1",
+    "next-transpile-modules": "^3.0.2",
+    "nprogress": "^0.2.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "^1.0.6",
+    "react-dom": "16.8.6",
+    "react-facebook-login": "^4.1.1",
+    "react-hook-form": "^4.2.2",
+    "react-kakao-login": "^1.2.0",
+    "react-naver-login": "^0.1.3-alpha1",
+    "react-redux": "^7.1.3",
+    "react-slick": "^0.25.2",
+    "react-spinners": "^0.8.0",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.1.3",
+    "typesafe-actions": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-destructuring": "^7.8.3",
+    "@types/node": "12.0.12",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4",
+    "@types/redux": "^3.6.0",
+    "@types/redux-saga": "^0.10.5",
+    "@types/styled-components": "4.1.16",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "babel-plugin-root-import": "^6.4.1",
+    "babel-plugin-styled-components": "^1.10.0",
+    "dotenv-cli": "^3.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-react-app": "^5.0.1",
+    "eslint-plugin-flowtype": "^4.5.2",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "express": "^4.17.1",
+    "nextjs-sitemap-generator": "^0.5.0",
+    "redux-devtools-extension": "^2.13.8",
+    "typescript": "3.5.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {}
+  },
+  "license": "ISC",
+  "actionCode": "f27f2a766b72197f9d40ed14cfcd51a1e9f5a327"
 }
