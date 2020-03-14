@@ -14,3 +14,24 @@ export const StyledLoginPage = styled.div`
     }
   }
 `;
+
+export const StyledSocialLoginMolecules = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  img {
+    cursor: pointer;
+    width: 482px;
+    height: 92px;
+    margin: 30px;
+  }
+
+  .login-button-bottom {
+    margin-bottom: 150px;
+  }
+
+  .login-button-top {
+    margin-top: 100px;
+  }
+`;
