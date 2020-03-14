@@ -43,7 +43,7 @@ const SnsLogInButton: React.FC = () => {
     <>
       <StyledSocialLoginMolecules>
         <KakaoLogin
-          jsKey={publicRuntimeConfig.KaKaoApiKey}
+          jsKey={publicRuntimeConfig.KakaoApiKey}
           onSuccess={res => {
             console.log(res);
             kakaoLoginSuccess(res);

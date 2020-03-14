@@ -58,7 +58,10 @@ module.exports = {
       // '/support/userule': { page: '/support/userule' },
       // '/support/refundrule': { page: '/support/refundrule' },
     };
-
+    console.log(process.env.KakaoApiKey);
+    console.log(process.env.NaverApiKey);
+    console.log(process.env.FacebookApiKey);
+    console.log(process.env.NaverCallbackUrl);
     return { ...defaultPath };
   },
   webpack(config) {
@@ -68,7 +71,7 @@ module.exports = {
 
   publicRuntimeConfig: {
     baseURL: process.env.baseURL,
-    KaKaoApiKey: process.env.KaKaoApiKey,
+    KakaoApiKey: process.env.KakaoApiKey,
     NaverApiKey: process.env.NaverApiKey,
     FacebookApiKey: process.env.FacebookApiKey,
     NaverCallbackUrl: process.env.NaverCallbackUrl,
