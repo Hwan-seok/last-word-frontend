@@ -25,6 +25,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: fetch env file
+        run: mkdir env
+          cd env
+          aws s3 cp ${{ secrets.S3_ENV_FILE_LOCATION }} env/
+
       - name: Build
         run: npm run build:real
 
