@@ -2,41 +2,44 @@ import React from 'react';
 import KakaoLogin from 'react-kakao-login/dist/';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
-// import NaverLogin from '~/src/utils/NaverLogin';
 import { StyledSocialLoginMolecules } from '../login.styled';
 import getConfig from 'next/config';
 import { SocialProvider } from '../../../../enums/socialProvider';
 import NaverLoginButton from './naverLogin';
+import useAccount from '../../../../store/account/account.hook';
 
 const SnsLogInButton: React.FC = () => {
+  const { socialLoginRequest } = useAccount();
+
   const { publicRuntimeConfig } = getConfig();
 
   const kakaoLoginSuccess = kakaoResponse => {
     successCall({
-      provider: SocialProvider.KAKAO,
-      accessToken: kakaoResponse.response.access_token,
+      socialProvider: SocialProvider.KAKAO,
+      socialAccessToken: kakaoResponse.response.access_token,
       socialId: String(kakaoResponse.profile.id),
     });
   };
 
   const facebookLoginSuccess = facebookResponse => {
     successCall({
-      provider: SocialProvider.FACEBOOK,
-      accessToken: facebookResponse.accessToken,
+      socialProvider: SocialProvider.FACEBOOK,
+      socialAccessToken: facebookResponse.accessToken,
       socialId: facebookResponse.id,
     });
   };
 
   const naverLoginSuccess = naverResponse => {
     successCall({
-      provider: SocialProvider.NAVER,
-      accessToken: naverResponse.accessToken,
+      socialProvider: SocialProvider.NAVER,
+      socialAccessToken: naverResponse.accessToken,
       socialId: naverResponse.socialId,
     });
   };
 
   const successCall = res => {
     console.log(res);
+    socialLoginRequest(res);
   };
 
   return (
