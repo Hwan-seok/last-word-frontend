@@ -1,6 +1,14 @@
 {
-  "name": "with-typescript-styled-components",
+  "name": "last-word-frontend",
   "version": "1.0.0",
+  "author": {
+    "email": "tttkhs@naver.com",
+    "name": "Hwanseok Kang",
+    "url": "lastword.hwanseok.co.kr"
+  },
+  "repository": {
+    "url": "https://github.com/Hwan-seok/last-word-frontend"
+  },
   "scripts": {
     "dev": "dotenv -e env/.env.local next",
     "build": "dotenv -e env/.env.local next build",
