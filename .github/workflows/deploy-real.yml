@@ -42,7 +42,7 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            out/ s3://serving-web-front
+            out/ s3://${{S3_BUCKET_NAME}}
 
       - name: Invalidate Cloud-Front
         env:
