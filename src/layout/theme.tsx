@@ -14,6 +14,7 @@ const theme = {
     border: '#d1d8e4',
   },
 
+  bodyWidth: '1180px',
   //자주 쓰이는 여백값을 미리 적용해둠.
   marginLayout: 'margin-left: 5vw; margin-right: 5vw;margin-top: 15vh;',
   //AppHeader크기를 10vh으로 둬서 최소 10vh은 잡아야함

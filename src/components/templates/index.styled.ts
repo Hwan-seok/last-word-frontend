@@ -4,7 +4,7 @@ import theme from '../../layout/theme';
 const borderColor = theme.color.border;
 
 export const StyledBody = styled.div`
-  width: 1180px;
+  width: ${theme.bodyWidth};
   margin: 8px auto;
   border: 1px solid ${borderColor};
   .body-wrapper {
