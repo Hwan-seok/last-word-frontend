@@ -2,7 +2,7 @@ name: Serving Front-end Deploy - REAL
 on:
   push:
     branches:
-      - real
+      - master
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
       - name: Checkout source code.
         uses: actions/checkout@v2
         with:
-          ref: 'real'
+          ref: 'master'
 
       - name: Cache node modules
         uses: actions/cache@v1
