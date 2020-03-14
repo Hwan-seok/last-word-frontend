@@ -4,7 +4,7 @@ import theme from '../../layout/theme';
 const borderColor = theme.color.border;
 
 export const StyledBody = styled.div`
-  width: 1080px;
+  width: 1180px;
   margin: 8px auto;
   border: 1px solid ${borderColor};
   .body-wrapper {
@@ -13,7 +13,7 @@ export const StyledBody = styled.div`
     padding: 3vw;
 
     .gif-container {
-      margin: 3vh 0;
+      margin: 5vh 0;
       display: flex;
       justify-content: space-around;
       .gif-item {
@@ -26,8 +26,9 @@ export const StyledBody = styled.div`
 
     .login-button {
       margin: 0 auto;
+      text-align: center;
       padding: 1vh;
-      width: 50%;
+      width: 60%;
       font-size: 2rem;
       border-radius: 10px;
       border: 1px solid ${borderColor};
