@@ -2,9 +2,10 @@ import isRefreshTokenExpired from '~/src/utils/isRefreshTokenExpired';
 import { SocialProvider } from '../../enums/socialProvider';
 import AccountAction from './account.action';
 import {
-  SOCIAL_REGISTER_REQUEST,
   SOCIAL_REGISTER_SUCCESS,
   SOCIAL_REGISTER_FAILED,
+  SOCIAL_LOGIN_SUCCESS,
+  SOCIAL_LOGIN_FAILED,
 } from './account.constants';
 
 export interface AccountReducerState {
@@ -30,14 +31,10 @@ export const AccountReducer = (
   action: AccountAction,
 ): AccountReducerState => {
   switch (action.type) {
-    case SOCIAL_REGISTER_REQUEST:
-      return {
-        ...state,
-      };
-
     case SOCIAL_REGISTER_SUCCESS:
       return {
         ...state,
+        isLoginSuccess: true,
       };
 
     case SOCIAL_REGISTER_FAILED:
@@ -47,6 +44,14 @@ export const AccountReducer = (
         socialId: action.payload.socialId,
         socialProvider: action.payload.socialProvider,
       };
+
+    case SOCIAL_LOGIN_SUCCESS:
+      return {
+        ...state,
+      };
+
+    case SOCIAL_LOGIN_FAILED:
+      return { ...state };
 
     default:
       return state;

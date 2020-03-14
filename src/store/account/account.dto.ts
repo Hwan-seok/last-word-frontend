@@ -4,10 +4,15 @@ export interface SocialRegisterPayload {
   socialAccessToken: string;
   socialId: string;
   socialProvider: SocialProvider;
-  nickname: string;
 }
 
 export interface SocialRegisterResponse {
   accessToken: string;
   refreshToken: string;
+}
+
+export interface SocialLoginPayload {
+  socialAccessToken: string;
+  socialId: string;
+  socialProvider: SocialProvider;
 }

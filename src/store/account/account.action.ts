@@ -3,8 +3,11 @@ import {
   SOCIAL_REGISTER_REQUEST,
   SOCIAL_REGISTER_SUCCESS,
   SOCIAL_REGISTER_FAILED,
+  SOCIAL_LOGIN_REQUEST,
+  SOCIAL_LOGIN_SUCCESS,
+  SOCIAL_LOGIN_FAILED,
 } from './account.constants';
-import { SocialRegisterPayload } from './account.dto';
+import { SocialRegisterPayload, SocialLoginPayload } from './account.dto';
 
 export const SocialRegisterAction = createAsyncAction(
   SOCIAL_REGISTER_REQUEST,
@@ -12,6 +15,14 @@ export const SocialRegisterAction = createAsyncAction(
   SOCIAL_REGISTER_FAILED,
 )<SocialRegisterPayload, void, SocialRegisterPayload, undefined>();
 
-type AccountAction = ActionType<typeof SocialRegisterAction>;
+export const SocialLoginAction = createAsyncAction(
+  SOCIAL_LOGIN_REQUEST,
+  SOCIAL_LOGIN_SUCCESS,
+  SOCIAL_LOGIN_FAILED,
+)<SocialLoginPayload, void, SocialLoginPayload, undefined>();
+
+type AccountAction =
+  | ActionType<typeof SocialRegisterAction>
+  | ActionType<typeof SocialLoginAction>;
 
 export default AccountAction;
