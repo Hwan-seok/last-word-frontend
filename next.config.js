@@ -48,6 +48,7 @@ module.exports = {
 
     const defaultPath = {
       '/': { page: '/index' },
+      '/login': { page: '/login/index' },
       // '/login': { page: '/login/index' },
       // '/login/signup': { page: '/login/signup' },
       // '/login/snscallback': { page: '/login/snscallback' },

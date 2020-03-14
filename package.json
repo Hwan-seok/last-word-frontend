@@ -15,7 +15,7 @@
     "export": "dotenv -e env/.env.local next export",
     "start": "dotenv -e env/.env.local next start",
     "build:development": "dotenv -e env/.env.dev next build",
-    "build:production": "dotenv env/-e .env.prod next build",
+    "build:production": "dotenv -e env/.env.prod next build",
     "export:development": "dotenv -e env/.env.dev next export",
     "export:production": "dotenv -e env/.env.prod next export",
     "generate:sitemap": "node sitemapGenerator.js"
