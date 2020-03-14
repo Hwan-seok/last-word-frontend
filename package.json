@@ -10,8 +10,7 @@
     "build:production": "dotenv env/-e .env.prod next build",
     "export:development": "dotenv -e env/.env.dev next export",
     "export:production": "dotenv -e env/.env.prod next export",
-    "generate:sitemap": "node sitemapGenerator.js",
-    "deploy": "curl -i -X POST -H \"Accept: application/vnd.github.everest-preview+json\" -H \"Authorization: token %npm_package_actionCode%\" -H \"Content-Type: application/json\" -d \"{\\\"event_type\\\": \\\"repository_dispatch\\\"}\" https://api.github.com/repos/Hwan-seok/serving-web-frontend/dispatches"
+    "generate:sitemap": "node sitemapGenerator.js"
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
@@ -72,6 +71,5 @@
     "extends": "react-app",
     "rules": {}
   },
-  "license": "ISC",
-  "actionCode": "f27f2a766b72197f9d40ed14cfcd51a1e9f5a327"
+  "license": "ISC"
 }
