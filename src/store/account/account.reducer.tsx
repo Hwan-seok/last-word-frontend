@@ -6,6 +6,7 @@ import {
   SOCIAL_REGISTER_FAILED,
   SOCIAL_LOGIN_SUCCESS,
   SOCIAL_LOGIN_FAILED,
+  GET_USER_DETAIL_SUCCESS,
 } from './account.constants';
 
 export interface AccountReducerState {
@@ -15,6 +16,11 @@ export interface AccountReducerState {
   socialId: string;
   socialAccessToken: string;
   isLoginSuccess: boolean;
+  imageUrl: string;
+  name: string;
+  win: number;
+  lose: number;
+  level: number;
 }
 
 const initialState: AccountReducerState = {
@@ -24,6 +30,11 @@ const initialState: AccountReducerState = {
   socialId: null,
   socialAccessToken: null,
   isLoginSuccess: !isRefreshTokenExpired(),
+  imageUrl: null,
+  name: null,
+  win: 0,
+  lose: 0,
+  level: 1,
 };
 
 export const AccountReducer = (
@@ -52,6 +63,16 @@ export const AccountReducer = (
 
     case SOCIAL_LOGIN_FAILED:
       return { ...state };
+
+    case GET_USER_DETAIL_SUCCESS:
+      return {
+        ...state,
+        imageUrl: action.payload.imageUrl,
+        name: action.payload.name,
+        win: action.payload.win,
+        lose: action.payload.lose,
+        level: action.payload.level,
+      };
 
     default:
       return state;

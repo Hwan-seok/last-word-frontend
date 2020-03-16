@@ -6,10 +6,16 @@ import {
 import {
   SOCIAL_REGISTER_REQUEST,
   SOCIAL_LOGIN_REQUEST,
+  GET_USER_DETAIL_REQUEST,
 } from './account.constants';
-import { SocialRegisterAction, SocialLoginAction } from './account.action';
+import {
+  SocialRegisterAction,
+  SocialLoginAction,
+  GetUserDetailAction,
+} from './account.action';
 import { setTokenToLocalStorage } from '../../utils/Storage';
 import { socialRegisterApi, socialLoginApi } from '../../api/auth.api';
+import { getUserDetail } from '../../api/user.api';
 
 function* SocialRegisterRequest(action) {
   const { payload } = action;
@@ -48,8 +54,23 @@ function* SocialLoginRequest(action) {
   }
 }
 
+function* GetUserDetailRequest() {
+  yield put(loadingModalOpenAction());
+
+  try {
+    const res = yield call(getUserDetail);
+
+    yield put(GetUserDetailAction.success(res.data.result));
+  } catch (err) {
+    yield put(GetUserDetailAction.failure());
+  } finally {
+    yield put(loadingModalCloseAction());
+  }
+}
+
 const accountSagas = [
   takeLatest(SOCIAL_REGISTER_REQUEST, SocialRegisterRequest),
   takeLatest(SOCIAL_LOGIN_REQUEST, SocialLoginRequest),
+  takeLatest(GET_USER_DETAIL_REQUEST, GetUserDetailRequest),
 ];
 export default accountSagas;

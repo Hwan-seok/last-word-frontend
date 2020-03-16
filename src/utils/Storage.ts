@@ -1,4 +1,7 @@
-export const setTokenToLocalStorage = (accessToken: string, refreshToken: string) => {
+export const setTokenToLocalStorage = (
+  accessToken: string,
+  refreshToken: string,
+) => {
   if (typeof window === 'undefined') {
     return;
   }
