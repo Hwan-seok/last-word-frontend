@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import useAccount from '~/src/store/account/account.hook';
 import { StyledAppHeader } from './AppHeader.styled';
+import ActivateLink from '../../utils/activateLink';
 // import LoginIcon from '~/src/components/svgIcons/LoginIcon';
 
 const AppHeader: React.FC = () => {
@@ -17,21 +18,21 @@ const AppHeader: React.FC = () => {
         </Link>
         {accountState.isLoginSuccess ? (
           <>
-            <Link href="/rooms">
+            <ActivateLink href="/rooms">
               <a className="header-item-left">게임하러 가기</a>
-            </Link>
-            <Link href="/mypage">
+            </ActivateLink>
+            <ActivateLink href="/mypage">
               <a className="header-item">마이페이지</a>
-            </Link>
+            </ActivateLink>
           </>
         ) : (
-          <Link href="/login">
+          <ActivateLink href="/login">
             <div className="header-item-left">
               <a>
                 <h3>로그인</h3>
               </a>
             </div>
-          </Link>
+          </ActivateLink>
         )}
       </StyledAppHeader>
     </>

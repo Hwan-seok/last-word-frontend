@@ -7,6 +7,7 @@ export const StyledAppHeader = styled.div`
   padding: 2vw 5vw;
   border-bottom: 1px solid ${theme.color.border};
   justify-content: space-between;
+  align-items: center;
 
   .header-logo {
     cursor: pointer;
@@ -19,10 +20,17 @@ export const StyledAppHeader = styled.div`
         object-fit: cover;
       }
     }
+  }
 
-    .header-item-left {
-      cursor: pointer;
-    }
+  .selected {
+    background-color: #8aa557;
+    padding: 10px;
+    border-radius: 40%;
+  }
+
+  .header-item-left {
+    margin-left: 60%;
+    cursor: pointer;
   }
 `;
 // export const AppHeaderBody = styled('div')`
