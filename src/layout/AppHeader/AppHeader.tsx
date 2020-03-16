@@ -27,11 +27,7 @@ const AppHeader: React.FC = () => {
           </>
         ) : (
           <ActivateLink href="/login">
-            <div className="header-item-left">
-              <a>
-                <h3>로그인</h3>
-              </a>
-            </div>
+            <a className="header-item-left">로그인</a>
           </ActivateLink>
         )}
       </StyledAppHeader>
