@@ -1,4 +1,4 @@
-import { SocialProvider } from '../../enums/socialProvider';
+import { SocialProvider } from '../../enums/socialProvider.enum';
 
 export interface SocialRegisterPayload {
   socialAccessToken: string;

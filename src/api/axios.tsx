@@ -118,7 +118,5 @@ Axios.interceptors.response.use(
   },
 );
 
-export const jsonContentTypeHeader = {
-  headers: { 'Content-Type': 'application/json' },
-};
+export const jsonContentTypeHeader = { 'Content-Type': 'application/json' };
 export default Axios;

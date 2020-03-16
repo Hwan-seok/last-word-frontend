@@ -14,6 +14,6 @@ export const getUserDetail = () => {
     },
   };
   Axios.get('', {
-    ...jsonContentTypeHeader,
+    headers: jsonContentTypeHeader,
   });
 };

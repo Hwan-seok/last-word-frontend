@@ -1,5 +1,5 @@
 import isRefreshTokenExpired from '~/src/utils/isRefreshTokenExpired';
-import { SocialProvider } from '../../enums/socialProvider';
+import { SocialProvider } from '../../enums/socialProvider.enum';
 import AccountAction from './account.action';
 import {
   SOCIAL_REGISTER_SUCCESS,
