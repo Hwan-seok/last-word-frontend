@@ -16,3 +16,11 @@ export interface SocialLoginPayload {
   socialId: string;
   socialProvider: SocialProvider;
 }
+
+export interface GetUserDetailSuccessPayload {
+  imageUrl: string;
+  name: string;
+  win: number;
+  lose: number;
+  level: number;
+}

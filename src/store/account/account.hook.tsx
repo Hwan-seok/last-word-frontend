@@ -3,7 +3,11 @@ import { useCallback } from 'react';
 import { StoreState } from '../rootStore';
 import { useSelector, useDispatch } from 'react-redux';
 import { AccountReducerState } from './account.reducer';
-import { SocialRegisterAction, SocialLoginAction } from './account.action';
+import {
+  SocialRegisterAction,
+  SocialLoginAction,
+  GetUserDetailAction,
+} from './account.action';
 
 const useAccount = () => {
   const dispatch = useDispatch();
@@ -22,7 +26,17 @@ const useAccount = () => {
     [dispatch],
   );
 
-  return { accountState, socialLoginRequest, socialRegisterRequest };
+  const getUserDetailRequest = useCallback(
+    () => dispatch(GetUserDetailAction.request()),
+    [dispatch],
+  );
+
+  return {
+    accountState,
+    socialLoginRequest,
+    socialRegisterRequest,
+    getUserDetailRequest,
+  };
 };
 
 export default useAccount;
