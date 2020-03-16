@@ -46,6 +46,7 @@ function* SocialLoginRequest(action) {
     if (accessToken) {
       yield call(setTokenToLocalStorage, accessToken, refreshToken);
       yield put(SocialLoginAction.success());
+      yield window.location.replace('/mypage');
     }
   } catch (err) {
     yield put(SocialRegisterAction.request(payload));

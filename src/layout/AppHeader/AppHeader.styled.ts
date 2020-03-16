@@ -9,6 +9,11 @@ export const StyledAppHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  [class^='header-item'] {
+    font-size: 1.17em;
+    font-weight: bolder;
+  }
+
   .header-logo {
     cursor: pointer;
     img {
@@ -23,7 +28,7 @@ export const StyledAppHeader = styled.div`
   }
 
   .selected {
-    background-color: #8aa557;
+    background-color: skyblue;
     padding: 10px;
     border-radius: 40%;
   }
