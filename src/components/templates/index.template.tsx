@@ -9,9 +9,17 @@ const IndexPage: React.FC = () => {
         <div className="body-wrapper">
           <h1>라스트 워드란?</h1>
           <div className="app-description">
-            라스트워드는 이러이러해서 저러저러해서 끝말잇기 할 수 있고 회원가입
-            쉽고
-            하하하하ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏssssssssssssssssㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Necessitatibus, in culpa asperiores iusto cupiditate officia id
+            autem minus sint suscipit veritatis, sit amet sed facere ullam
+            veniam recusandae quos voluptate! Lorem ipsum, dolor sit amet
+            consectetur adipisicing elit. Necessitatibus, in culpa asperiores
+            iusto cupiditate officia id autem minus sint suscipit veritatis, sit
+            amet sed facere ullam veniam recusandae quos voluptate! Lorem ipsum,
+            dolor sit amet consectetur adipisicing elit. Necessitatibus, in
+            culpa asperiores iusto cupiditate officia id autem minus sint
+            suscipit veritatis, sit amet sed facere ullam veniam recusandae quos
+            voluptate!
           </div>
           <div className="gif-container">
             <div className="gif-item">

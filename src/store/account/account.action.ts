@@ -9,6 +9,7 @@ import {
   GET_USER_DETAIL_FAILED,
   GET_USER_DETAIL_REQUEST,
   GET_USER_DETAIL_SUCCESS,
+  ACCOUNT_STATE_PURGE,
 } from './account.constants';
 import {
   SocialRegisterPayload,
@@ -34,9 +35,16 @@ export const GetUserDetailAction = createAsyncAction(
   GET_USER_DETAIL_FAILED,
 )<void, GetUserDetailSuccessPayload, void, undefined>();
 
+export const StatePurgeAction = () => {
+  return {
+    type: ACCOUNT_STATE_PURGE,
+  };
+};
+
 type AccountAction =
   | ActionType<typeof SocialRegisterAction>
   | ActionType<typeof SocialLoginAction>
-  | ActionType<typeof GetUserDetailAction>;
+  | ActionType<typeof GetUserDetailAction>
+  | ReturnType<typeof StatePurgeAction>;
 
 export default AccountAction;

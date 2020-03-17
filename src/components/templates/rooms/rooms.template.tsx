@@ -4,7 +4,7 @@ import React from 'react';
 const RoomsTemplate: React.FC = () => {
   return (
     <>
-      <StyledRoomsPage>rooms</StyledRoomsPage>
+      <StyledRoomsPage>lo</StyledRoomsPage>
     </>
   );
 };

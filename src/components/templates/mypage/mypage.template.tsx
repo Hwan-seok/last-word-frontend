@@ -5,20 +5,25 @@ import {
 } from './mypage.styled';
 import { clearTokenInLocalStorage } from '../../../utils/Storage';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+
 import useAccount from '../../../store/account/account.hook';
+import { StatePurgeAction } from '../../../store/account/account.action';
 const MyPageTemplate: React.FC = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { accountState, getUserDetailRequest } = useAccount();
 
   const logOutButtonClick = () => {
     clearTokenInLocalStorage();
+    dispatch(StatePurgeAction());
     alert('로그아웃 완료');
     router.push('/login');
   };
 
   useEffect(() => {
     getUserDetailRequest();
-  });
+  }, [getUserDetailRequest]);
 
   return (
     <>
