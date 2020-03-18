@@ -2,6 +2,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // next.config.js
 require('dotenv').config();
+console.log(__filename);
+const totalRooms = 1000;
+//  require('C:/Users/hwanseok.kang/Desktop/Last Word/src/api/rooms.api').getRoomCountApi().data.result.roomsCount;
+const pageLimitGames = 10;
+const totalGamePage =
+  totalRooms !== 0 ? Math.ceil(totalRooms / pageLimitGames) : 1;
 
 module.exports = {
   exportTrailingSlash: true,
@@ -46,12 +52,25 @@ module.exports = {
     // }
     // console.log(VideoPage);
 
+    let roomListPage = {};
+    for (let offset = 1; offset < totalGamePage + 1; offset++) {
+      roomListPage = {
+        [`/rooms/${offset}`]: { page: '/rooms/[offset]', query: { offset } },
+      };
+    }
+
+    let gameRoomPage = {};
+    for (let roomId = 1; roomId < totalRooms; roomId++) {
+      gameRoomPage = {
+        [`/room/${roomId}`]: { page: '/room/[roomId]', query: { roomId } },
+      };
+    }
     const defaultPath = {
       '/': { page: '/index' },
       '/login': { page: '/login/index' },
       '/mypage': { page: '/mypage/index' },
-      '/rooms': { page: '/rooms/index' },
       '/login/navercallback': { page: '/login/navercallback' },
+      '/rooms/create': { page: '/rooms/create' },
 
       // '/login': { page: '/login/index' },
       // '/login/signup': { page: '/login/signup' },
@@ -62,11 +81,8 @@ module.exports = {
       // '/support/userule': { page: '/support/userule' },
       // '/support/refundrule': { page: '/support/refundrule' },
     };
-    console.log(process.env.KakaoApiKey);
-    console.log(process.env.NaverApiKey);
-    console.log(process.env.FacebookApiKey);
-    console.log(process.env.NaverCallbackUrl);
-    return { ...defaultPath };
+    console.log(process.env.LEVEL);
+    return { ...defaultPath, ...roomListPage, ...gameRoomPage };
   },
   webpack(config) {
     config.resolve.modules.push(__dirname);
