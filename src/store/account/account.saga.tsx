@@ -23,7 +23,6 @@ function* SocialRegisterRequest(action) {
 
   try {
     const res = yield call(socialRegisterApi, payload);
-    console.log(res.data);
     const { accessToken, refreshToken } = res.data.result;
     if (accessToken)
       yield call(setTokenToLocalStorage, accessToken, refreshToken);
