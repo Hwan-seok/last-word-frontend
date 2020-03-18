@@ -1,6 +1,6 @@
-import RoomsTemplate from '../../src/components/templates/rooms/rooms.template';
+import GameRoomListTemplate from '../../src/components/templates/gameRoomList/gameRoomList.template';
 import React from 'react';
 
-const RoomsPage: React.FC = () => <RoomsTemplate></RoomsTemplate>;
+const RoomsPage: React.FC = () => <GameRoomListTemplate></GameRoomListTemplate>;
 
 export default RoomsPage;
