@@ -1,8 +1,11 @@
 import React from 'react';
 import { StyledBody } from './index.styled';
 import Link from 'next/link';
+import useAccount from '../../store/account/account.hook';
 
 const IndexPage: React.FC = () => {
+  const { accountState } = useAccount();
+
   return (
     <>
       <StyledBody>
@@ -30,9 +33,15 @@ const IndexPage: React.FC = () => {
             </div>
           </div>
           <div className="login-button">
-            <Link href="/login">
-              <a>3초만에 가입하고 게임하러 가기!</a>
-            </Link>
+            {accountState.isLoginSuccess ? (
+              <Link href="/rooms">
+                <a>게임하러 가기!</a>
+              </Link>
+            ) : (
+              <Link href="/login">
+                <a className="login-button">3초만에 가입하고 게임하러 가기!</a>
+              </Link>
+            )}
           </div>
         </div>
       </StyledBody>
