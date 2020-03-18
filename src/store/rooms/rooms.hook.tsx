@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState } from '../rootStore';
 import { useCallback } from 'react';
-import { GetRoomListAction } from './rooms.action';
+import { GetRoomListAction, GetRoomsCountAction } from './rooms.action';
 import { RoomsReducerState } from './rooms.reducer';
 
 const useRooms = () => {
@@ -17,7 +17,12 @@ const useRooms = () => {
     [dispatch],
   );
 
-  return { roomsState, getRoomList };
+  const getRoomsCount = useCallback(
+    () => dispatch(GetRoomsCountAction.request()),
+    [dispatch],
+  );
+
+  return { roomsState, getRoomList, getRoomsCount };
 };
 
 export default useRooms;

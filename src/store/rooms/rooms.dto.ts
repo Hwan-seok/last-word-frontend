@@ -18,3 +18,7 @@ export interface RoomDetailInfo {
   gameMode: GameMode;
   roomStatus: RoomStatus;
 }
+
+export interface GetRoomsCountResponseDto {
+  roomsCount: number;
+}

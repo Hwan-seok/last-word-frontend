@@ -34,3 +34,16 @@ export const getRoomListApi = (payload: GetRoomListRequestDto) => {
     headers: jsonContentTypeHeader,
   });
 };
+
+export const getRoomCountApi = () => {
+  return {
+    data: {
+      result: {
+        roomsCount: 34,
+      },
+    },
+  };
+  return Axios.get('', {
+    headers: jsonContentTypeHeader,
+  });
+};

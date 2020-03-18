@@ -3,13 +3,15 @@ import {
   loadingModalOpenAction,
   loadingModalCloseAction,
 } from '../modal/modal.action';
-import { GetRoomListAction } from './rooms.action';
-import { getRoomListApi } from '../../api/rooms.api';
-import { GET_ROOM_LIST_REQUEST } from './rooms.constants';
+import { GetRoomListAction, GetRoomsCountAction } from './rooms.action';
+import { getRoomListApi, getRoomCountApi } from '../../api/rooms.api';
+import {
+  GET_ROOM_LIST_REQUEST,
+  GET_ROOMS_COUNT_REQUEST,
+} from './rooms.constants';
 
 export function* getRoomList(action) {
   const { payload } = action;
-  console.log('ssdasd');
   try {
     yield put(loadingModalOpenAction());
     const res = yield call(getRoomListApi, payload);
@@ -21,6 +23,22 @@ export function* getRoomList(action) {
   }
 }
 
-const roomSagas = [takeLatest(GET_ROOM_LIST_REQUEST, getRoomList)];
+export function* getRoomsCount() {
+  yield put(loadingModalOpenAction());
+
+  try {
+    const res = yield call(getRoomCountApi);
+    yield put(GetRoomsCountAction.success(res.data.result));
+  } catch {
+    yield put(GetRoomsCountAction.failure());
+  } finally {
+    yield put(loadingModalCloseAction());
+  }
+}
+
+const roomSagas = [
+  takeLatest(GET_ROOM_LIST_REQUEST, getRoomList),
+  takeLatest(GET_ROOMS_COUNT_REQUEST, getRoomsCount),
+];
 
 export default roomSagas;
