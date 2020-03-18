@@ -9,6 +9,7 @@ export const StyledGameRoomListPage = styled.div`
   min-height: 70vh;
   display: flex;
   flex-direction: column;
+  font-size: 1.06rem;
 
   hr {
     width: 90%;
@@ -31,7 +32,7 @@ export const StyledGameRoomListPage = styled.div`
   }
 
   .room-list-header {
-    margin: 10% 5% 0 5%;
+    margin: 4% 5% 0 5%;
     font-weight: bold;
     display: flex;
     flex-direction: row;
@@ -68,7 +69,7 @@ export const StyledGameRoomListPage = styled.div`
   }
 
   .pagination {
-    margin-top: auto;
+    margin: auto 0 5vh 0;
     list-style-type: none;
     display: flex;
     justify-content: center;
@@ -76,11 +77,14 @@ export const StyledGameRoomListPage = styled.div`
     align-content: center;
 
     .page,
-    .pagination-before,
-    .pagination-after {
+    [class^='pagination-'] {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: skyblue;
       cursor: pointer;
+      border-radius: 15%;
+      border: 1px ${theme.color.border} solid;
       padding: 5px;
-      border: 1px solid skyblue;
       margin: 3px;
     }
 
@@ -93,5 +97,14 @@ export const StyledGameRoomListPage = styled.div`
         background-color: #aaffbb;
       }
     }
+  }
+  .create-room {
+    font-weight: bold;
+    margin: 5% 10% 0 auto;
+    font-size: 1.5rem;
+    border: 1px skyblue solid;
+    padding: 10px;
+    background-color: skyblue;
+    border-radius: 20%;
   }
 `;

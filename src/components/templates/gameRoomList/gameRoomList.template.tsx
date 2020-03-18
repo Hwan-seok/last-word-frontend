@@ -2,16 +2,28 @@ import { StyledGameRoomListPage } from './gameRoomList.styled';
 import React, { useEffect } from 'react';
 import useRooms from '../../../store/rooms/rooms.hook';
 import Link from 'next/link';
+import ActivateLink from '../../../utils/links/activateLink';
 
-const GameRoomListTemplate: React.FC = () => {
-  const { roomsState, getRoomList } = useRooms();
+interface GameRoomListProps {
+  offset: number;
+}
 
+const GameRoomListTemplate: React.FC<GameRoomListProps> = ({
+  offset,
+}: GameRoomListProps) => {
+  const { roomsState, getRoomList, getRoomsCount } = useRooms();
+  const currentPage = offset;
+  const { maxPage } = roomsState;
   useEffect(() => {
-    getRoomList(roomsState.currentPage, roomsState.limit);
-  }, [getRoomList, roomsState.currentPage, roomsState.limit]);
+    getRoomList(currentPage, roomsState.limit);
+    getRoomsCount();
+  }, [currentPage, getRoomList, getRoomsCount, roomsState.limit]);
   return (
     <>
       <StyledGameRoomListPage>
+        <Link href="/rooms/create">
+          <a className="create-room">방 만들기</a>
+        </Link>
         <div className="room-list-header">
           <div className="room-number">#</div>
           <div className="room-name">방 이름</div>
@@ -42,11 +54,43 @@ const GameRoomListTemplate: React.FC = () => {
           })}
         </div>
         <div className="pagination">
-          <li className="pagination-before">{'< 이전 페이지'}</li>
-          <li className="page">1</li>
-          <li className="page">2</li>
-          <li className="page">3</li>
-          <li className="pagination-after">{'다음 페이지 >'}</li>
+          {currentPage !== 1 ? (
+            <>
+              <Link href={'/rooms/[offset]'} as="/rooms/1">
+                <a className="pagination-start">{'<< 처음'}</a>
+              </Link>
+              <Link href={`/rooms/[offset]`} as={`/rooms/${currentPage - 1}`}>
+                <a className="pagination-before">{'< 이전'}</a>
+              </Link>
+            </>
+          ) : null}
+          {[
+            ...Array(maxPage)
+              .fill(undefined)
+              .map((_, idx) => {
+                const offsetPage = idx + 1;
+
+                return (
+                  <ActivateLink
+                    key={offsetPage}
+                    href={`/rooms/[offset]`}
+                    as={`/rooms/${offsetPage}`}
+                  >
+                    <a className="page">{offsetPage}</a>
+                  </ActivateLink>
+                );
+              }),
+          ]}
+          {currentPage !== maxPage ? (
+            <>
+              <Link href={`/rooms/[offset]`} as={`/rooms/${currentPage + 1}`}>
+                <a className="pagination-after">{'다음 >'}</a>
+              </Link>
+              <Link href={`/rooms/[offset]`} as={`/rooms/${maxPage}`}>
+                <a className="pagination-end">{'끝 >>'}</a>
+              </Link>
+            </>
+          ) : null}
         </div>
       </StyledGameRoomListPage>
     </>

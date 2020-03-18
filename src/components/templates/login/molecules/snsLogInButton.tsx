@@ -38,7 +38,6 @@ const SnsLogInButton: React.FC = () => {
   };
 
   const successCall = res => {
-    console.log(res);
     socialLoginRequest(res);
   };
 
@@ -48,7 +47,6 @@ const SnsLogInButton: React.FC = () => {
         <KakaoLogin
           jsKey={publicRuntimeConfig.KakaoApiKey}
           onSuccess={res => {
-            console.log(res);
             kakaoLoginSuccess(res);
           }}
           onFailure={res => console.log('failed', res)}
