@@ -32,17 +32,15 @@ const IndexPage: React.FC = () => {
               <img src="/static/images/giphy-2.gif"></img>
             </div>
           </div>
-          <div className="login-button">
-            {accountState.isLoginSuccess ? (
-              <Link href="/rooms">
-                <a>게임하러 가기!</a>
-              </Link>
-            ) : (
-              <Link href="/login">
-                <a className="login-button">3초만에 가입하고 게임하러 가기!</a>
-              </Link>
-            )}
-          </div>
+          {accountState.isLoginSuccess ? (
+            <Link href="/rooms/[offset]" as={`/rooms/1`}>
+              <a className="login-button">게임하러 가기!</a>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <a className="login-button">3초만에 가입하고 게임하러 가기!</a>
+            </Link>
+          )}
         </div>
       </StyledBody>
     </>

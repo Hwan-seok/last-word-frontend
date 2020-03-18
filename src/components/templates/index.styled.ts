@@ -24,15 +24,20 @@ export const StyledBody = styled.div`
       }
     }
 
+    transition: background-color 0.3s;
     .login-button {
       margin: 0 auto;
       text-align: center;
-      padding: 1vh;
+      padding: 20px;
       width: 60%;
       font-size: 2rem;
+      display: block;
       border-radius: 10px;
       border: 1px solid ${borderColor};
       background-color: #4da1fe;
+      :hover {
+        background-color: skyblue;
+      }
     }
   }
 `;
