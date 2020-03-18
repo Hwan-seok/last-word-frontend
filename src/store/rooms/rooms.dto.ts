@@ -1,7 +1,7 @@
 import { GameMode } from '../../enums/gameMode.enum';
 import { RoomStatus } from '../../enums/roomStatus.enum';
 
-export interface GetRoomListDto {
+export interface GetRoomListRequestDto {
   offset: number;
   limit: number;
 }
