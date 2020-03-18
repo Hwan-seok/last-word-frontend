@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "dotenv -e env/.env.local next",
+    "debug": "set NODE_OPTION='--inspect' && dotenv -e env/.env.local next dev",
     "build": "dotenv -e env/.env.local next build",
     "export": "dotenv -e env/.env.local next export",
     "start": "dotenv -e env/.env.local next start",

@@ -9,7 +9,7 @@ export const socialRegisterApi = (payload: SocialRegisterPayload) => {
 
   return { data: { result: { accessToken: 1234, refreshToken: 1234 } } };
   Axios.post('', convertedPayload, {
-    ...jsonContentTypeHeader,
+    headers: jsonContentTypeHeader,
   });
 };
 
@@ -18,6 +18,6 @@ export const socialLoginApi = (payload: SocialLoginPayload) => {
 
   throw new Error();
   return Axios.post('', convertedPayload, {
-    ...jsonContentTypeHeader,
+    headers: jsonContentTypeHeader,
   });
 };

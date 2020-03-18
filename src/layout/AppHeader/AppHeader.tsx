@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import useAccount from '~/src/store/account/account.hook';
 import { StyledAppHeader } from './AppHeader.styled';
-import ActivateLink from '../../utils/activateLink';
+import ActivateLink from '../../utils/links/activateLink';
+import UniversalActivateLink from '../../utils/links/universalActivateLink';
 // import LoginIcon from '~/src/components/svgIcons/LoginIcon';
 
 const AppHeader: React.FC = () => {
@@ -18,9 +19,9 @@ const AppHeader: React.FC = () => {
         </Link>
         {accountState.isLoginSuccess ? (
           <>
-            <ActivateLink href="/rooms">
+            <UniversalActivateLink href="/rooms/[offset]" as="/rooms/1">
               <a className="header-item-left">게임하러 가기</a>
-            </ActivateLink>
+            </UniversalActivateLink>
             <ActivateLink href="/mypage">
               <a className="header-item">마이페이지</a>
             </ActivateLink>

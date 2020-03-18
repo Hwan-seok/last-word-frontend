@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 
 import { StyledSocialLoginMolecules } from '../login.styled';
 import getConfig from 'next/config';
-import { SocialProvider } from '../../../../enums/socialProvider';
+import { SocialProvider } from '../../../../enums/socialProvider.enum';
 import NaverLoginButton from './naverLogin';
 import useAccount from '../../../../store/account/account.hook';
 
@@ -38,7 +38,6 @@ const SnsLogInButton: React.FC = () => {
   };
 
   const successCall = res => {
-    console.log(res);
     socialLoginRequest(res);
   };
 
@@ -48,7 +47,6 @@ const SnsLogInButton: React.FC = () => {
         <KakaoLogin
           jsKey={publicRuntimeConfig.KakaoApiKey}
           onSuccess={res => {
-            console.log(res);
             kakaoLoginSuccess(res);
           }}
           onFailure={res => console.log('failed', res)}

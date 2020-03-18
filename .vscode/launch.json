@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "trace": true,
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "sourceMaps": true,
+      "smartStep": true,
+      "outFiles": ["${workspaceFolder}/.next/static/development/pages"],
+      "name": "PersonCard - Attach to Node",
+      "port": 3000,
+      "address": "localhost",
+      "protocol": "inspector"
+    }
+  ]
+}

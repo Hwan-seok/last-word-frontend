@@ -8,10 +8,12 @@ import storage from 'redux-persist/lib/storage';
 import rootSaga from './rootSaga';
 import { AccountReducerState, AccountReducer } from './account/account.reducer';
 import { ModalReducerState, ModalReducer } from './modal/modal.reducer';
+import { RoomsReducerState, RoomsReducer } from './rooms/rooms.reducer';
 
 export interface StoreState {
   AccountReducer: AccountReducerState;
   ModalReducer: ModalReducerState;
+  RoomsReducer: RoomsReducerState;
 }
 //will be deleted soon...
 
@@ -24,6 +26,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   AccountReducer,
   ModalReducer,
+  RoomsReducer,
   // 다른 리듀서를 만들게되면 여기에 넣어줌..
 });
 

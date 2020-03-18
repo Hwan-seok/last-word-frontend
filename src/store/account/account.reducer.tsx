@@ -1,5 +1,5 @@
 import isRefreshTokenExpired from '~/src/utils/isRefreshTokenExpired';
-import { SocialProvider } from '../../enums/socialProvider';
+import { SocialProvider } from '../../enums/socialProvider.enum';
 import AccountAction from './account.action';
 import {
   SOCIAL_REGISTER_SUCCESS,
@@ -7,6 +7,7 @@ import {
   SOCIAL_LOGIN_SUCCESS,
   SOCIAL_LOGIN_FAILED,
   GET_USER_DETAIL_SUCCESS,
+  ACCOUNT_STATE_PURGE,
 } from './account.constants';
 
 export interface AccountReducerState {
@@ -73,6 +74,9 @@ export const AccountReducer = (
         lose: action.payload.lose,
         level: action.payload.level,
       };
+
+    case ACCOUNT_STATE_PURGE:
+      return initialState;
 
     default:
       return state;
