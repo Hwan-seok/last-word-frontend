@@ -76,6 +76,13 @@ export const StyledGameRoomListPage = styled.div`
     flex-direction: row;
     align-content: center;
 
+    .page-index {
+    }
+
+    .invisible {
+      visibility: hidden;
+    }
+
     .page,
     [class^='pagination-'] {
       font-size: 1.1em;

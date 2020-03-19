@@ -6,6 +6,7 @@ import { ErrorMessage } from '../form.styled';
 
 const MakeRoomPageTemplate: React.FC = () => {
   const { register, handleSubmit, errors } = useForm();
+
   const onSubmit = data => {
     console.log(data);
   };
