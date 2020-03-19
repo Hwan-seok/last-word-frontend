@@ -5,11 +5,13 @@ import { ParticipatedUser } from './room.dto';
 export interface RoomDetailReducerState {
   users: Array<ParticipatedUser>;
   gameOverCount: number;
+  isGameStarted: boolean;
 }
 
 const initialState = {
   users: [],
   gameOverCount: 10,
+  isGameStarted: false,
 };
 
 export const RoomDetailReducer = (

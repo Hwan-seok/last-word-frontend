@@ -7,6 +7,7 @@ export interface ParticipatedUsersDto {
 }
 
 export interface ParticipatedUser {
+  id: number;
   name: string;
   level: number;
   profileImageUrl: string;

@@ -8,32 +8,110 @@ export const StyledGameRoom = styled.div`
   margin: 0 auto;
   min-height: 70vh;
 
-  [class^='column-'] {
-    margin: 4px;
-    padding: 1vw;
+  .top [class^='column-'] {
     border: 1px ${theme.color.border} solid;
     box-sizing: border-box;
   }
 
   .column-left {
     width: 60%;
+    margin-right: 8px;
   }
+
   .column-right {
-    width: 33%;
+    width: 38%;
   }
 
   .row-container {
     display: flex;
   }
 
+  .words {
+  }
+
+  .users {
+    padding: 3vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .profile-containter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1vh;
+    img {
+      width: 10%;
+      border-radius: 50%;
+      flex: 1 1;
+    }
+    .profile-name {
+      text-align: center;
+      flex: 2 2;
+    }
+    .profile-level {
+      text-align: center;
+      flex: 1 1;
+    }
+    .profile-is-ready {
+      text-align: center;
+      flex: 1 1;
+    }
+  }
+  form {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    align-self: center;
+    height: 100%;
+    input,
+    button {
+      padding: 10px;
+      font-size: 2rem;
+    }
+
+    input {
+      flex: 8;
+      margin-right: 10px;
+      padding-left: 20px;
+    }
+    button {
+      cursor: pointer;
+      flex: 2;
+    }
+  }
   .top {
-    flex: 7;
+    margin-top: 8px;
+    flex: 9 9 60vh;
   }
   .middle {
-    flex: 1;
+    margin-top: 8px;
+    flex: 1 1 8vh;
+  }
+
+  .ready {
+    border: 1px ${theme.color.border} solid;
+    border-radius: 10%;
+    font-size: 2rem;
+    p {
+      vertical-align: center;
+      text-align: center;
+    }
   }
 
   .bottom {
-    flex: 1;
+    flex: 1 1 5vh;
+    color: red;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .error {
+      margin-right: auto;
+    }
+    .count {
+      margin-right: 20%;
+    }
   }
 `;

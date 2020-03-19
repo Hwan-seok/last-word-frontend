@@ -11,6 +11,7 @@ import {
 } from './account.constants';
 
 export interface AccountReducerState {
+  id: number;
   accessToken: string;
   refreshToken: string;
   socialProvider: SocialProvider;
@@ -25,6 +26,7 @@ export interface AccountReducerState {
 }
 
 const initialState: AccountReducerState = {
+  id: null,
   accessToken: null,
   refreshToken: null,
   socialProvider: null,

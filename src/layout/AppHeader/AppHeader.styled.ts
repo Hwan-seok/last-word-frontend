@@ -17,8 +17,7 @@ export const StyledAppHeader = styled.div`
   .header-logo {
     cursor: pointer;
     img {
-      height: 50px;
-      width: 100px;
+      height: 70px;
       object-fit: contain;
       @media screen and (min-width: 1025px) {
         width: auto;
