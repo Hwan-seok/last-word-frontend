@@ -3,11 +3,15 @@ import React from 'react';
 import { StyledMakeRoom } from './makeRoom.styled';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '../form.styled';
+import useRooms from '../../../store/roomList/roomList.hook';
 
 const MakeRoomPageTemplate: React.FC = () => {
   const { register, handleSubmit, errors } = useForm();
+  const { createRoom } = useRooms();
+
   const onSubmit = data => {
     console.log(data);
+    createRoom(data);
   };
 
   return (

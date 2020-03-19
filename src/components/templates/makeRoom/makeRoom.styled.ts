@@ -23,7 +23,8 @@ export const StyledMakeRoom = styled.div`
     justify-content: space-around;
   }
   #form-submit {
-    padding: auto;
+    height: 100%;
+    cursor: pointer;
   }
   label,
   input,

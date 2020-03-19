@@ -1,6 +1,6 @@
 import { StyledGameRoomListPage } from './gameRoomList.styled';
 import React, { useEffect } from 'react';
-import useRooms from '../../../store/rooms/rooms.hook';
+import useRooms from '../../../store/roomList/roomList.hook';
 import Link from 'next/link';
 import ActivateLink from '../../../utils/links/activateLink';
 
@@ -54,43 +54,65 @@ const GameRoomListTemplate: React.FC<GameRoomListProps> = ({
           })}
         </div>
         <div className="pagination">
-          {currentPage !== 1 ? (
-            <>
-              <Link href={'/rooms/[offset]'} as="/rooms/1">
-                <a className="pagination-start">{'<< 처음'}</a>
-              </Link>
-              <Link href={`/rooms/[offset]`} as={`/rooms/${currentPage - 1}`}>
-                <a className="pagination-before">{'< 이전'}</a>
-              </Link>
-            </>
-          ) : null}
-          {[
-            ...Array(maxPage)
-              .fill(undefined)
-              .map((_, idx) => {
-                const offsetPage = idx + 1;
+          <div>
+            <Link href={'/rooms/[offset]'} as="/rooms/1">
+              <a
+                className={`pagination-start ${
+                  currentPage !== 1 ? '' : 'invisible'
+                }`}
+              >
+                {'<< 처음'}
+              </a>
+            </Link>
+            <Link href={`/rooms/[offset]`} as={`/rooms/${currentPage - 1}`}>
+              <a
+                className={`pagination-before ${
+                  currentPage !== 1 ? '' : 'invisible'
+                }`}
+              >
+                {'< 이전'}
+              </a>
+            </Link>
+          </div>
+          <div className="page-index">
+            {[
+              ...Array(maxPage)
+                .fill(undefined)
+                .map((_, idx) => {
+                  const offsetPage = idx + 1;
 
-                return (
-                  <ActivateLink
-                    key={offsetPage}
-                    href={`/rooms/[offset]`}
-                    as={`/rooms/${offsetPage}`}
-                  >
-                    <a className="page">{offsetPage}</a>
-                  </ActivateLink>
-                );
-              }),
-          ]}
-          {currentPage !== maxPage ? (
-            <>
-              <Link href={`/rooms/[offset]`} as={`/rooms/${currentPage + 1}`}>
-                <a className="pagination-after">{'다음 >'}</a>
-              </Link>
-              <Link href={`/rooms/[offset]`} as={`/rooms/${maxPage}`}>
-                <a className="pagination-end">{'끝 >>'}</a>
-              </Link>
-            </>
-          ) : null}
+                  return (
+                    <ActivateLink
+                      key={offsetPage}
+                      href={`/rooms/[offset]`}
+                      as={`/rooms/${offsetPage}`}
+                    >
+                      <a className="page">{offsetPage}</a>
+                    </ActivateLink>
+                  );
+                }),
+            ]}
+          </div>
+          <div>
+            <Link href={`/rooms/[offset]`} as={`/rooms/${currentPage + 1}`}>
+              <a
+                className={`pagination-after ${
+                  currentPage !== maxPage ? '' : 'invisible'
+                }`}
+              >
+                {'다음 >'}
+              </a>
+            </Link>
+            <Link href={`/rooms/[offset]`} as={`/rooms/${maxPage}`}>
+              <a
+                className={`pagination-end ${
+                  currentPage !== maxPage ? '' : 'invisible'
+                }`}
+              >
+                {'끝 >>'}
+              </a>
+            </Link>
+          </div>
         </div>
       </StyledGameRoomListPage>
     </>

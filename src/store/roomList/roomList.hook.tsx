@@ -1,8 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { StoreState } from '../rootStore';
 import { useCallback } from 'react';
-import { GetRoomListAction, GetRoomsCountAction } from './rooms.action';
-import { RoomsReducerState } from './rooms.reducer';
+import {
+  GetRoomListAction,
+  GetRoomsCountAction,
+  CreateRoomAction,
+} from './roomList.action';
+import { RoomsReducerState } from './roomList.reducer';
 
 const useRooms = () => {
   const dispatch = useDispatch();
@@ -10,7 +14,7 @@ const useRooms = () => {
   const roomsState: RoomsReducerState = useSelector(
     (state: StoreState) => state.RoomsReducer,
   );
-
+  console.log(roomsState);
   const getRoomList = useCallback(
     (currentPage: number, limit: number) =>
       dispatch(GetRoomListAction.request({ offset: currentPage, limit })),
@@ -22,7 +26,12 @@ const useRooms = () => {
     [dispatch],
   );
 
-  return { roomsState, getRoomList, getRoomsCount };
+  const createRoom = useCallback(
+    payload => dispatch(CreateRoomAction.request(payload)),
+    [dispatch],
+  );
+
+  return { roomsState, getRoomList, getRoomsCount, createRoom };
 };
 
 export default useRooms;

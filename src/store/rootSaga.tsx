@@ -1,7 +1,8 @@
 import { all } from 'redux-saga/effects';
 import accountSaga from './account/account.saga';
-import roomSagas from './rooms/rooms.saga';
+import roomListSagas from './roomList/roomList.saga';
+import roomDetailSaga from './room/room.saga';
 
 export default function* rootSaga() {
-  yield all([...accountSaga, ...roomSagas]);
+  yield all([...accountSaga, ...roomListSagas, ...roomDetailSaga]);
 }
