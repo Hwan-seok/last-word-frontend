@@ -22,3 +22,13 @@ export interface RoomDetailInfo {
 export interface GetRoomsCountResponseDto {
   roomsCount: number;
 }
+
+export interface CreateRoomRequestDto {
+  roomName: string;
+  roomCapacity: number;
+  roomMode: GameMode;
+}
+
+export interface CreateRoomResponseDto {
+  roomNumber: number;
+}

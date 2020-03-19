@@ -6,11 +6,16 @@ import {
   GET_ROOMS_COUNT_SUCCESS,
   GET_ROOMS_COUNT_FAILED,
   GET_ROOMS_COUNT_REQUEST,
+  CREATE_ROOM_REQUEST,
+  CREATE_ROOM_SUCCESS,
+  CREATE_ROOM_FAILED,
 } from './rooms.constants';
+
 import {
   GetRoomListResponseDto,
   GetRoomListRequestDto,
   GetRoomsCountResponseDto,
+  CreateRoomRequestDto,
 } from './rooms.dto';
 
 export const GetRoomListAction = createAsyncAction(
@@ -25,8 +30,15 @@ export const GetRoomsCountAction = createAsyncAction(
   GET_ROOMS_COUNT_FAILED,
 )<void, GetRoomsCountResponseDto, void, undefined>();
 
+export const CreateRoomAction = createAsyncAction(
+  CREATE_ROOM_REQUEST,
+  CREATE_ROOM_SUCCESS,
+  CREATE_ROOM_FAILED,
+)<CreateRoomRequestDto, void, void, undefined>();
+
 type RoomsAction =
   | ActionType<typeof GetRoomListAction>
-  | ActionType<typeof GetRoomsCountAction>;
+  | ActionType<typeof GetRoomsCountAction>
+  | ActionType<typeof CreateRoomAction>;
 
 export default RoomsAction;

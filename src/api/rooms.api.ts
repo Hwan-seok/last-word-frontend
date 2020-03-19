@@ -47,3 +47,8 @@ export const getRoomCountApi = () => {
     headers: jsonContentTypeHeader,
   });
 };
+
+export const createRoomApi = payload => {
+  return { data: { result: { createdRoomNumber: 5 } } };
+  return Axios.post('', payload, { headers: jsonContentTypeHeader });
+};

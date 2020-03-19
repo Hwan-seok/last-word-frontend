@@ -3,12 +3,22 @@ import {
   loadingModalOpenAction,
   loadingModalCloseAction,
 } from '../modal/modal.action';
-import { GetRoomListAction, GetRoomsCountAction } from './rooms.action';
-import { getRoomListApi, getRoomCountApi } from '../../api/rooms.api';
+import {
+  GetRoomListAction,
+  GetRoomsCountAction,
+  CreateRoomAction,
+} from './rooms.action';
+import {
+  getRoomListApi,
+  getRoomCountApi,
+  createRoomApi,
+} from '../../api/rooms.api';
 import {
   GET_ROOM_LIST_REQUEST,
   GET_ROOMS_COUNT_REQUEST,
+  CREATE_ROOM_REQUEST,
 } from './rooms.constants';
+import router from 'next/router';
 
 export function* getRoomList(action) {
   const { payload } = action;
@@ -36,9 +46,25 @@ export function* getRoomsCount() {
   }
 }
 
+export function* createRoom(action) {
+  const { payload } = action;
+  yield put(loadingModalOpenAction());
+
+  try {
+    const res = yield call(createRoomApi, payload);
+    yield put(CreateRoomAction.success());
+    router.replace(`/room/${res.data.result.createdRoomNumber}`);
+  } catch (err) {
+    yield put(CreateRoomAction.failure());
+  } finally {
+    yield put(loadingModalCloseAction());
+  }
+}
+
 const roomSagas = [
   takeLatest(GET_ROOM_LIST_REQUEST, getRoomList),
   takeLatest(GET_ROOMS_COUNT_REQUEST, getRoomsCount),
+  takeLatest(CREATE_ROOM_REQUEST, createRoom),
 ];
 
 export default roomSagas;
