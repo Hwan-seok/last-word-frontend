@@ -5,8 +5,8 @@ import {
   GetRoomListAction,
   GetRoomsCountAction,
   CreateRoomAction,
-} from './rooms.action';
-import { RoomsReducerState } from './rooms.reducer';
+} from './roomList.action';
+import { RoomsReducerState } from './roomList.reducer';
 
 const useRooms = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const useRooms = () => {
   const roomsState: RoomsReducerState = useSelector(
     (state: StoreState) => state.RoomsReducer,
   );
-
+  console.log(roomsState);
   const getRoomList = useCallback(
     (currentPage: number, limit: number) =>
       dispatch(GetRoomListAction.request({ offset: currentPage, limit })),

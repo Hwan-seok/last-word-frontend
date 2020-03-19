@@ -9,14 +9,14 @@ import {
   CREATE_ROOM_REQUEST,
   CREATE_ROOM_SUCCESS,
   CREATE_ROOM_FAILED,
-} from './rooms.constants';
+} from './roomList.constants';
 
 import {
   GetRoomListResponseDto,
   GetRoomListRequestDto,
   GetRoomsCountResponseDto,
   CreateRoomRequestDto,
-} from './rooms.dto';
+} from './roomList.dto';
 
 export const GetRoomListAction = createAsyncAction(
   GET_ROOM_LIST_REQUEST,

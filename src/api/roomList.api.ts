@@ -1,4 +1,4 @@
-import { GetRoomListRequestDto } from '../store/rooms/rooms.dto';
+import { GetRoomListRequestDto } from '../store/roomList/roomList.dto';
 import Axios, { jsonContentTypeHeader } from './axios';
 import { GameMode } from '../enums/gameMode.enum';
 import { RoomStatus } from '../enums/roomStatus.enum';

@@ -7,17 +7,17 @@ import {
   GetRoomListAction,
   GetRoomsCountAction,
   CreateRoomAction,
-} from './rooms.action';
+} from './roomList.action';
 import {
   getRoomListApi,
   getRoomCountApi,
   createRoomApi,
-} from '../../api/rooms.api';
+} from '../../api/roomList.api';
 import {
   GET_ROOM_LIST_REQUEST,
   GET_ROOMS_COUNT_REQUEST,
   CREATE_ROOM_REQUEST,
-} from './rooms.constants';
+} from './roomList.constants';
 import router from 'next/router';
 
 export function* getRoomList(action) {
@@ -61,10 +61,10 @@ export function* createRoom(action) {
   }
 }
 
-const roomSagas = [
+const roomListSagas = [
   takeLatest(GET_ROOM_LIST_REQUEST, getRoomList),
   takeLatest(GET_ROOMS_COUNT_REQUEST, getRoomsCount),
   takeLatest(CREATE_ROOM_REQUEST, createRoom),
 ];
 
-export default roomSagas;
+export default roomListSagas;

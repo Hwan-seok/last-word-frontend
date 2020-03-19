@@ -1,9 +1,9 @@
-import RoomsAction from './rooms.action';
-import { RoomDetailInfo } from './rooms.dto';
+import RoomsAction from './roomList.action';
+import { RoomDetailInfo } from './roomList.dto';
 import {
   GET_ROOM_LIST_SUCCESS,
   GET_ROOMS_COUNT_SUCCESS,
-} from './rooms.constants';
+} from './roomList.constants';
 
 export interface RoomsReducerState {
   currentPage: number;

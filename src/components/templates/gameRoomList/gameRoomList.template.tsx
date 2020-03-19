@@ -1,6 +1,6 @@
 import { StyledGameRoomListPage } from './gameRoomList.styled';
 import React, { useEffect } from 'react';
-import useRooms from '../../../store/rooms/rooms.hook';
+import useRooms from '../../../store/roomList/roomList.hook';
 import Link from 'next/link';
 import ActivateLink from '../../../utils/links/activateLink';
 
