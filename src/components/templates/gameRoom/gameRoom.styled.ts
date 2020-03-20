@@ -65,20 +65,32 @@ export const StyledGameRoom = styled.div`
     justify-content: space-between;
     align-self: center;
     height: 100%;
+    input:focus {
+      flex: 12;
+    }
     input,
     button {
       padding: 10px;
       font-size: 2rem;
+      transition: flex 0.5s linear;
+    }
+
+    button {
+      cursor: pointer;
+      flex: 2;
+      border: 1px skyblue solid;
+      border-radius: 10%;
+      background-color: skyblue;
+    }
+
+    button.invalidate {
+      background-color: red;
     }
 
     input {
       flex: 8;
       margin-right: 10px;
       padding-left: 20px;
-    }
-    button {
-      cursor: pointer;
-      flex: 2;
     }
   }
   .top {
@@ -92,7 +104,7 @@ export const StyledGameRoom = styled.div`
 
   .ready {
     border: 1px ${theme.color.border} solid;
-    border-radius: 10%;
+    border-radius: 5%;
     font-size: 2rem;
     p {
       vertical-align: center;

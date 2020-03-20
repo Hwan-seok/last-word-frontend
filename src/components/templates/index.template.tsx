@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyledBody } from './index.styled';
 import Link from 'next/link';
+import { ChannelTalk } from 'react-channel-plugin';
+import getConfig from 'next/config';
 import useAccount from '../../store/account/account.hook';
 
 const IndexPage: React.FC = () => {
   const { accountState } = useAccount();
+  const { publicRuntimeConfig } = getConfig();
+  const onTalkError = React.useCallback(err => {
+    console.error('Error:', err);
+  }, []);
+  ChannelTalk.show();
 
   return (
     <>
@@ -41,6 +48,19 @@ const IndexPage: React.FC = () => {
               <a className="login-button">3초만에 가입하고 게임하러 가기!</a>
             </Link>
           )}
+          <ChannelTalk
+            pluginKey={publicRuntimeConfig.ChannelTalkKey}
+            locale="ko"
+            userId={accountState.id}
+            profile={{
+              name: accountState.name,
+              avatarUrl: accountState.imageUrl,
+            }}
+            hideDefaultLauncher={false}
+            hideNavigationBarOnChatView={true}
+            openChatDirectlyAsPossible
+            onError={onTalkError}
+          />
         </div>
       </StyledBody>
     </>
