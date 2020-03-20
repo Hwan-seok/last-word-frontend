@@ -90,6 +90,7 @@ module.exports = {
   },
 
   publicRuntimeConfig: {
+    ChannelTalkKey: process.env.ChannelTalkKey,
     baseURL: process.env.baseURL,
     KakaoApiKey: process.env.KakaoApiKey,
     NaverApiKey: process.env.NaverApiKey,

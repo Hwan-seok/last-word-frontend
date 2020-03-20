@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import theme from '../theme';
+import { ChannelTalk } from 'react-channel-plugin';
+import getConfig from 'next/config';
+import useAccount from '../../store/account/account.hook';
 
 const StyledFooter = styled.div`
   width: 100vw;
@@ -22,6 +25,12 @@ const StyledFooter = styled.div`
   }
 `;
 const AppFooter: React.FC = () => {
+  const { publicRuntimeConfig } = getConfig();
+  const { accountState } = useAccount();
+  const onTalkError = React.useCallback(err => {
+    console.error('Error:', err);
+  }, []);
+  ChannelTalk.show();
   return (
     <StyledFooter>
       <div className="wrapper">
@@ -36,6 +45,20 @@ const AppFooter: React.FC = () => {
         </div>
         <div>COPYRIGHT 2020, Hwan Seok Kang, All rights reserved. </div>
       </div>
+
+      <ChannelTalk
+        pluginKey={publicRuntimeConfig.ChannelTalkKey}
+        locale="ko"
+        userId={accountState.id}
+        profile={{
+          name: accountState.name,
+          avatarUrl: accountState.imageUrl,
+        }}
+        hideDefaultLauncher={false}
+        hideNavigationBarOnChatView={true}
+        openChatDirectlyAsPossible
+        onError={onTalkError}
+      />
     </StyledFooter>
   );
 };
