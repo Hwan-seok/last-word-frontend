@@ -34,6 +34,9 @@ export const StyledGameRoom = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
   .profile-containter {
     display: flex;
@@ -96,6 +99,7 @@ export const StyledGameRoom = styled.div`
   .top {
     margin-top: 8px;
     flex: 9 9 60vh;
+    height: 60vh;
   }
   .middle {
     margin-top: 8px;
@@ -106,6 +110,10 @@ export const StyledGameRoom = styled.div`
     border: 1px ${theme.color.border} solid;
     border-radius: 5%;
     font-size: 2rem;
+    cursor: pointer;
+    :hover {
+      background-color: skyblue;
+    }
     p {
       vertical-align: center;
       text-align: center;

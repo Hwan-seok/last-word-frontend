@@ -4,6 +4,7 @@ import useAccount from '~/src/store/account/account.hook';
 import { StyledAppHeader } from './AppHeader.styled';
 import ActivateLink from '../../utils/links/activateLink';
 import UniversalActivateLink from '../../utils/links/universalActivateLink';
+import { Animated } from 'react-animated-css';
 // import LoginIcon from '~/src/components/svgIcons/LoginIcon';
 
 const AppHeader: React.FC = () => {
@@ -14,7 +15,13 @@ const AppHeader: React.FC = () => {
       <StyledAppHeader>
         <Link href="/">
           <a className="header-logo">
-            <img src="/static/images/MainLogo.png" alt="logo" />
+            <Animated
+              animationIn="bounceInRight"
+              animationOut="bounceInUp"
+              isVisible={true}
+            >
+              <img src="/static/images/MainLogo.png" alt="logo" />
+            </Animated>
           </a>
         </Link>
         {accountState.isLoginSuccess ? (

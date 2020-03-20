@@ -47,6 +47,10 @@ class MyApp extends App<any, any> {
           <meta property="og:url" content="https://last-word.hwanseok.co.kr" />
           <link rel="shortcut" href="/favicon.ico" />
           <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+          />
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"

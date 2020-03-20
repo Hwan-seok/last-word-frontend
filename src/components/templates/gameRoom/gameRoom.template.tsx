@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '../form.styled';
 import useAccount from '../../../store/account/account.hook';
 import * as Hangul from 'hangul-js';
+import { Animated } from 'react-animated-css';
 
 interface GamePageParamProps {
   roomId: number;
@@ -56,18 +57,25 @@ const GameRoomPageTemplate: React.FC<GamePageParamProps> = (
           <div className="column-right users">
             {getRoomState.users.map((user, idx) => {
               return (
-                <div className="profile-containter" key={idx}>
-                  <img
-                    className="profile-image"
-                    src={user.profileImageUrl}
-                    alt="프로필 사진"
-                  ></img>
-                  <div className="profile-name">{user.name}</div>
-                  <div className="profile-level">Lv. {user.level}</div>
-                  <div className="profile-is-ready">
-                    {user.isReady ? '준비중' : ''}
+                <Animated
+                  animationIn="rollIn"
+                  animationOut="rollOut"
+                  isVisible={true}
+                  key={idx}
+                >
+                  <div className="profile-containter">
+                    <img
+                      className="profile-image"
+                      src={user.profileImageUrl}
+                      alt="프로필 사진"
+                    ></img>
+                    <div className="profile-name">{user.name}</div>
+                    <div className="profile-level">Lv. {user.level}</div>
+                    <div className="profile-is-ready">
+                      {user.isReady ? '준비중' : ''}
+                    </div>
                   </div>
-                </div>
+                </Animated>
               );
             })}
           </div>
