@@ -11,7 +11,6 @@ const IndexPage: React.FC = () => {
   const onTalkError = React.useCallback(err => {
     console.error('Error:', err);
   }, []);
-  ChannelTalk.show();
 
   return (
     <>
@@ -57,7 +56,7 @@ const IndexPage: React.FC = () => {
               avatarUrl: accountState.imageUrl,
             }}
             hideDefaultLauncher={false}
-            hideNavigationBarOnChatView={true}
+            hideNavigationBarOnChatView={false}
             openChatDirectlyAsPossible
             onError={onTalkError}
           />
