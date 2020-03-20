@@ -4,6 +4,7 @@ import useRoomDetail from '../../../store/room/room.hook';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '../form.styled';
 import useAccount from '../../../store/account/account.hook';
+import * as Hangul from 'hangul-js';
 
 interface GamePageParamProps {
   roomId: number;
@@ -34,6 +35,14 @@ const GameRoomPageTemplate: React.FC<GamePageParamProps> = (
   const onWordSubmit = data => {
     console.log(data);
     reset();
+  };
+
+  const validateWordComplete = value => {
+    const isValidate = Hangul.isCompleteAll(value);
+    if (!isValidate) {
+      return '완성된 단어를 입력해주세요';
+    }
+    return true;
   };
 
   useEffect(() => {
@@ -70,13 +79,16 @@ const GameRoomPageTemplate: React.FC<GamePageParamProps> = (
                 type="text"
                 name="word"
                 ref={register({
-                  required: {
-                    value: true,
-                    message: '이어질 단어를 입력해주세요',
+                  minLength: {
+                    value: 2,
+                    message: '2글자 이상의 단어를 입력해주세요',
                   },
+                  validate: validateWordComplete,
                 })}
               ></input>
-              <button type="submit">▶</button>
+              <button type="submit" className={errors.word ? `invalidate` : ''}>
+                ▶
+              </button>
             </form>
           </div>
           <div className="column-right ready">
