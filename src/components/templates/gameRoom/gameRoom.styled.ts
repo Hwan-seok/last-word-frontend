@@ -27,6 +27,21 @@ export const StyledGameRoom = styled.div`
   }
 
   .words {
+    .word-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      .word-content {
+        font-size: 2rem;
+      }
+
+      :not(.word-content) {
+      }
+      > * {
+        margin: 10px;
+      }
+    }
   }
 
   .users {

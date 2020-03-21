@@ -3,7 +3,10 @@ import { useCallback } from 'react';
 import { GetRoomDto } from './room.dto';
 import { StoreState } from '../rootStore';
 import { RoomDetailReducerState } from './room.reducer';
-import { GetRoomParticipatedUsersAction } from './room.action';
+import {
+  GetRoomParticipatedUsersAction,
+  SendMessageAction,
+} from './room.action';
 
 const useRoomDetail = () => {
   const dispatch = useDispatch();
@@ -18,7 +21,12 @@ const useRoomDetail = () => {
     [dispatch],
   );
 
-  return { getRoomState, getRoomParticipatedUsers };
+  const sendMessage = useCallback(
+    payload => dispatch(SendMessageAction.request(payload)),
+    [dispatch],
+  );
+
+  return { getRoomState, getRoomParticipatedUsers, sendMessage };
 };
 
 export default useRoomDetail;

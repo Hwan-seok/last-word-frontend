@@ -6,6 +6,7 @@ import { ErrorMessage } from '../form.styled';
 import useAccount from '../../../store/account/account.hook';
 import * as Hangul from 'hangul-js';
 import { Animated } from 'react-animated-css';
+import { Word } from '../../../store/room/room.dto';
 
 interface GamePageParamProps {
   roomId: number;
@@ -17,7 +18,12 @@ interface FormData {
 const GameRoomPageTemplate: React.FC<GamePageParamProps> = (
   props: GamePageParamProps,
 ) => {
-  const { getRoomState, getRoomParticipatedUsers } = useRoomDetail();
+  const ONE_SECOND = 1000;
+  const {
+    getRoomState,
+    getRoomParticipatedUsers,
+    sendMessage,
+  } = useRoomDetail();
   const { accountState } = useAccount();
   const roomNumber = props.roomId;
   const usersCount = getRoomState.users.length;
@@ -34,7 +40,12 @@ const GameRoomPageTemplate: React.FC<GamePageParamProps> = (
   const { register, handleSubmit, errors, reset } = useForm<FormData>();
 
   const onWordSubmit = data => {
-    console.log(data);
+    const word: Word = {
+      content: data.word,
+      writtenUserName: accountState.name,
+      writtenTime: new Date(),
+    };
+    sendMessage(word);
     reset();
   };
 
@@ -53,7 +64,31 @@ const GameRoomPageTemplate: React.FC<GamePageParamProps> = (
     <>
       <StyledGameRoom>
         <div className="row-container top">
-          <div className="column-left words"></div>
+          <div className="column-left words">
+            {getRoomState.wordList.map((word, idx) => {
+              return (
+                <Animated
+                  animationIn="bounceInRight"
+                  animationOut="bounceOutLeft"
+                  isVisible={true}
+                  key={idx}
+                  className="word-container"
+                >
+                  <div className="word-content">{word.content}</div>
+                  <div className="word-written-user">
+                    {word.writtenUserName}
+                  </div>
+                  <div className="word-written-time">
+                    {Math.floor(
+                      (new Date().getTime() - word.writtenTime.getTime()) /
+                        ONE_SECOND,
+                    )}
+                    초 전 이음
+                  </div>
+                </Animated>
+              );
+            })}
+          </div>
           <div className="column-right users">
             {getRoomState.users.map((user, idx) => {
               return (

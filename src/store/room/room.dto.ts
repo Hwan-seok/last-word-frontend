@@ -14,3 +14,9 @@ export interface ParticipatedUser {
   isReady: boolean;
   isSuperUser: boolean;
 }
+
+export interface Word {
+  writtenUserName: string;
+  writtenTime: Date;
+  content: string;
+}
