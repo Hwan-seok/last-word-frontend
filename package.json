@@ -27,7 +27,7 @@
     "babel-polyfill": "^6.26.0",
     "dotenv": "^8.2.0",
     "hangul-js": "^0.2.6",
-    "immer": "^5.3.6",
+    "immer": "^8.0.1",
     "jwt-decode": "^2.2.0",
     "next": "^9.1.6",
     "next-redux-saga": "^4.1.2",
